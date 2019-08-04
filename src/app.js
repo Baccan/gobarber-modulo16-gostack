@@ -33,7 +33,11 @@ class App {
     this.server.use(Sentry.Handlers.requestHandler());
     // this.server.use(cors({ origin: 'https://rocketseat.com.br' }));
     this.server.use(helmet());
-    this.server.use(cors());
+    this.server.use(
+      cors({
+        // origin: process.env.FRONT_URL,
+      })
+    );
     this.server.use(express.json());
 
     this.server.use(
