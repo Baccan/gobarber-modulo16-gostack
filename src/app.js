@@ -4,6 +4,7 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
+import helmet from 'helmet';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
 import 'express-async-errors'; // precisa estar antes das rotas
@@ -28,6 +29,7 @@ class App {
     // The request handler must be the first middleware on the app
     this.server.use(Sentry.Handlers.requestHandler());
     // this.server.use(cors({ origin: 'https://rocketseat.com.br' }));
+    this.server.use(helmet());
     this.server.use(cors());
     this.server.use(express.json());
     this.server.use(
